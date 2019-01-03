@@ -1,0 +1,161 @@
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu {
+  margin: 0;
+  padding: 0; }
+
+header, footer, section, article, aside, nav, hgroup, address, figure, figcaption, menu, details {
+  display: block; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th {
+  text-align: left;
+  font-weight: normal; }
+
+html, body, fieldset, img, iframe, abbr {
+  border: 0; }
+
+i, cite, em, var, address, dfn {
+  font-style: normal; }
+
+[hidefocus], summary {
+  outline: 0; }
+
+li {
+  list-style: none; }
+
+h1, h2, h3, h4, h5, h6, small {
+  font-size: 100%; }
+
+sup, sub {
+  font-size: 83%; }
+
+pre, code, kbd, samp {
+  font-family: inherit; }
+
+q:before, q:after {
+  content: none; }
+
+textarea {
+  overflow: auto;
+  resize: none; }
+
+label, summary {
+  cursor: default; }
+
+a, button {
+  cursor: pointer; }
+
+h1, h2, h3, h4, h5, h6, em, strong, b {
+  font-weight: bold; }
+
+del, ins, u, s, a, a:hover {
+  text-decoration: none; }
+
+body, textarea, input, button, select, keygen, legend {
+  font: 12px/1.14 arial,\5b8b\4f53;
+  color: #333;
+  outline: 0; }
+
+body {
+  background: #fff; }
+
+a, a:hover {
+  color: #333; }
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center; }
+  #app .page {
+    position: relative;
+    width: 100vw;
+    height: 100vh; }
+    #app .page .page-head .page-head-wrapper {
+      height: 10.04498vh;
+      background: #f9f9f9;
+      width: 100vw;
+      display: flex;
+      justify-content: space-around; }
+      #app .page .page-head .page-head-wrapper .cancle {
+        margin-left: 3.33333vw;
+        margin-top: 3.82309vh;
+        font-size: 4.26667vw;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: #434343; }
+      #app .page .page-head .page-head-wrapper .title {
+        margin-top: 3.82309vh;
+        height: 2.54873vh;
+        font-size: 4.8vw;
+        font-family: PingFangSC-Bold;
+        font-weight: bold;
+        color: #191919; }
+      #app .page .page-head .page-head-wrapper .publish {
+        margin-right: 3.33333vw;
+        margin-top: 3.82309vh;
+        font-size: 3.73333vw;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: white; }
+    #app .page .page-head::after {
+      display: block;
+      content: '';
+      background: #dfdfdf;
+      height: 1px;
+      width: 100vw; }
+
+.page_title .el-input__inner {
+  border: none; }
+
+.page_title::after {
+  display: block;
+  content: '';
+  background: #dfdfdf;
+  height: 1px;
+  width: 100vw; }
+
+.page_content .el-textarea__inner {
+  border: none; }
+
+.page_input-bar {
+  background: #f9f9f9;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left; }
+  .page_input-bar .page_input-bar_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .page_input-bar .page_input-bar_wrapper .page_input-bar_wrapper_wrap {
+      width: 73.33333vw; }
+      .page_input-bar .page_input-bar_wrapper .page_input-bar_wrapper_wrap .el-input__inner {
+        height: 9.33333vw;
+        margin: 0.67466vh 0; }
+    .page_input-bar .page_input-bar_wrapper .insert-emoji, .page_input-bar .page_input-bar_wrapper .insert-img {
+      width: 6.4vw;
+      height: 3.5982vh;
+      background-size: contain;
+      background-repeat: no-repeat; }
+      .page_input-bar .page_input-bar_wrapper .insert-emoji img, .page_input-bar .page_input-bar_wrapper .insert-img img {
+        width: 6.4vw;
+        height: 3.5982vh; }
+    .page_input-bar .page_input-bar_wrapper .insert-emoji {
+      background-image: url("/static/img/jiahao.png"); }
+    .page_input-bar .page_input-bar_wrapper .insert-img {
+      background-image: url("/static/img/zhaopian.png"); }
+  .page_input-bar::before {
+    display: block;
+    content: '';
+    background: #dfdfdf;
+    height: 1px;
+    width: 100vw; }
+  .page_input-bar .slideActive {
+    height: 18vh; }
+  .page_input-bar .slide-fade-enter-active, .page_input-bar .slide-fade-leave-to {
+    transition: all 3s ease-in-out; }
+  .page_input-bar .slide-fade-leave-active, .page_input-bar .slide-fade-enter-to {
+    transition: all 3s ease-in-out; }
