@@ -117,8 +117,10 @@ a, a:hover {
   height: 1px;
   width: 100vw; }
 
-.page_content .el-textarea__inner {
-  border: none; }
+.page_content {
+  border: 1px solid red; }
+  .page_content .el-textarea__inner {
+    border: none; }
 
 .page_input-bar {
   background: #f9f9f9;

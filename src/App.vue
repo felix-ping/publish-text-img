@@ -13,6 +13,23 @@
         </div>
       </header>
       <section class="page_title" @click='listenTouch(1)' @touch='listenTouch(1)'>
+        <el-input
+          placeholder="请输入内容"
+          v-model="titleMessage"
+          clearable
+        ></el-input>
+      </section>
+
+      <section class="page_content" @click='listenTouch(2)' @touch='listenTouch(1)'>
+        <el-input
+          type="textarea"
+          :rows="15"
+          placeholder="请输入内容"
+          v-model="contenMessage"
+          class="preview"
+        ></el-input>
+      </section>
+
 
 
     <div>
@@ -32,23 +49,6 @@
     </div>
 
 
-
-
-        <el-input
-          placeholder="请输入内容"
-          v-model="titleMessage"
-          clearable
-        ></el-input>
-      </section>
-      <section class="page_content" @click='listenTouch(2)' @touch='listenTouch(1)'>
-        <el-input
-          type="textarea"
-          :rows="24"
-          placeholder="请输入内容"
-          v-model="contenMessage"
-          class="preview"
-        ></el-input>
-      </section>
       <footer class="page_input-bar"  >
         <div class="page_input-bar_wrapper">
           <div class="page_input-bar_wrapper_wrap">
