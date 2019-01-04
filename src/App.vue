@@ -32,21 +32,16 @@
 
 
 
-    <div>
-      <el-upload
-        ref="imgBroadcastUpload"
-        :auto-upload="false" multiple
-        :file-list="diaLogForm.imgBroadcastList"
-        list-type="picture-card"
-        :on-change="imgBroadcastChange"
-        :on-remove="imgBroadcastRemove"
-        accept="image/jpg,image/png,image/jpeg"
-        action="">
-        <i class="el-icon-plus"></i>
-        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过2M</div>
-      </el-upload>
-      <el-button>submitData</el-button> 
-    </div>
+<el-upload
+  class="upload-demo"
+  action="#"
+  :on-preview="handlePreview"
+  :on-remove="handleRemove"
+  :file-list="fileList2"
+  list-type="picture">
+  <el-button size="small" type="primary">点击上传</el-button>
+  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+</el-upload>
 
 
       <footer class="page_input-bar"  >
@@ -83,15 +78,13 @@ export default {
       show3: true,
       dialogImageUrl: '',
       dialogVisible: false,
-      diaLogForm: {
-        goodsName:'',  // 商品名称字段
-        imgBroadcastList:[],  // 储存选中的图片列表
-        imgsStr:''     // 后端需要的多张图base64字符串 , 分割
-      }
+      fileList2: [{name: 'food.jpeg', 
+      url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'},
+       {name: 'food2.jpeg',
+        url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
     }
   },
   created(){
-    this.getGoodsData()
   },
   methods: {
     listenTouch:function (e) {
@@ -107,66 +100,16 @@ export default {
         this.inputMessage = ''
       } 
     },
-    imgBroadcastChange (file, fileList) {
-        const isLt2M = file.size / 1024 / 1024 < 2  // 上传头像图片大小不能超过 2MB
-        if (!isLt2M) {
-          this.diaLogForm.imgBroadcastList = fileList.filter(v => v.uid !== file.uid)
-          this.$message.error('图片选择失败，每张图片大小不能超过 2MB,请重新选择!')
-        } else {
-          this.diaLogForm.imgBroadcastList.push(file)
-        }
+     handleChange(file, fileList) {
+        this.fileList3 = fileList.slice(-3);
       },
-      // 有图片移除后 触发
-      imgBroadcastRemove (file, fileList) {
-        this.diaLogForm.imgBroadcastList = fileList
+      handleRemove(file, fileList) {
+        console.log(file, fileList);
       },
-      // 获取商品原有信息
-      getGoodsData () {
-        getCommodityById({ cid: this.diaLogForm.id }).then(res => {
-          if (res.status) {
-            Object.assign(this.diaLogForm, res.data)
-            // 把 '1.jpg,2.jpg,3.jpg' 转成[{url:'http://xxx.xxx.xx/j.jpg',...}] 这种格式在upload组件内展示。 imgBroadcastList 展示原有的图片
-            this.diaLogForm.imgBroadcastList = this.diaLogForm.imgsStr.split(',').map(v => ({ url: this.BASE_URL + '/' + v })) 
-          }
-        }).catch(err => {
-          console.log(err.data)
-        })
-      },
-      // 提交弹窗数据
-      async submitDialogData () {
-        const imgBroadcastListBase64 = []
-        console.log('图片转base64开始...')
-        this.dialogFormLoading = true
-        // 并发 转码轮播图片list => base64
-        const filePromises = this.diaLogForm.imgBroadcastList.map(async file => {
-          if (file.raw) {  // 如果是本地文件
-            const response = await uploadImgToBase64(file.raw)
-            return response.result.replace(/.*;base64,/, '')
-          } else { // 如果是在线文件
-            const response = await URLImgToBase64(file.url)
-            return response.replace(/.*;base64,/, '')
-          }
-        })
-        // 按次序输出 base64图片
-        for (const textPromise of filePromises) {
-          imgBroadcastListBase64.push(await textPromise)
-        }
-        console.log('图片转base64结束...')
-        this.diaLogForm.imgs = imgBroadcastListBase64.join()
-        console.log(this.diaLogForm)
-        if (!this.isEdit) {  //  新增编辑 公用一个组件。区分接口调用
-          const res = await addCommodity(this.diaLogForm)              // 提交表单
-          if (res.status) {
-            this.$message.success('添加成功')
-          }
-        } else {
-          const res = await modifyCommodity(this.diaLogForm)            // 提交表单
-          if (res.status) {
-            this.$router.push('/goods/goods-list')
-            this.$message.success('编辑成功')
-          }
-        }
+      handlePreview(file) {
+        console.log(file);
       }
+   
     
   },
   // computed: {
